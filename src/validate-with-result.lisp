@@ -1,10 +1,10 @@
-(defpackage #:lazy-result
+(defpackage #:validate-with-result
   (:use #:coalton
         #:coalton-prelude)
   (:shadow #:let)
   (:export #:let))
 
-(cl:in-package #:lazy-result)
+(cl:in-package #:validate-with-result)
 
 (named-readtables:in-readtable coalton:coalton)
 
