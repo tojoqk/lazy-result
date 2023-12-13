@@ -1,10 +1,10 @@
-(defpackage #:validate-with-result
+(defpackage #:result-binder
   (:use #:coalton
         #:coalton-prelude)
   (:shadow #:let)
   (:export #:let))
 
-(cl:in-package #:validate-with-result)
+(cl:in-package #:result-binder)
 
 (named-readtables:in-readtable coalton:coalton)
 

@@ -1,4 +1,4 @@
-# validate-with-result
+# result-binder
 
 Syntax `let` for delaying result in coalton.
 
@@ -8,22 +8,22 @@ Since it depends on Coalton, please refer to the link below to install Coalton.
 
 https://github.com/coalton-lang/coalton
 
-Next, place validate-with-result in your local repository (`~/common-lisp`, etc.).
+Next, place result-binder in your local repository (`~/common-lisp`, etc.).
 
 ```shell:~/common-lisp
-git clone https://github.com/tojoqk/validate-with-result.git
+git clone https://github.com/tojoqk/result-binder.git
 ```
 
 If you are using Quicklisp, you can load the system with the following.
 
 ```lisp
-(ql:quickload :validate-with-result)
+(ql:quickload :result-binder)
 ```
 
 ## Usage
 
 ```
-(validate-with-result:let ((<var1> <result-type-value1>)
+(result-binder:let ((<var1> <result-type-value1>)
                   (<var2> <result-type-value2>)
                   ...)
   <expr> ...)
@@ -34,13 +34,13 @@ Type of Err must be monoid.
 ## Examples
 
 ```
-(defpackage #:validate-with-result-example
+(defpackage #:result-binder-example
   (:use #:coalton
         #:coalton-prelude)
   (:local-nicknames
    (#:string #:coalton-library/string)))
 
-(in-package #:validate-with-result-example)
+(in-package #:result-binder-example)
 
 (named-readtables:in-readtable coalton:coalton)
 
@@ -66,34 +66,34 @@ Type of Err must be monoid.
       (_ (Err (make-list "parse-status-error")))))
 
   (define case-ok
-    (validate-with-result:let ((name (parse-name "john"))
-                               (age (parse-age "28"))
-                               (status (parse-status "sleeping")))
+    (result-binder:let ((name (parse-name "john"))
+                        (age (parse-age "28"))
+                        (status (parse-status "sleeping")))
       (Ok (Tuple3 name age status))))
 
   (define case-err-1
-    (validate-with-result:let ((name (parse-name "john"))
-                               (age (parse-age "-28"))
-                               (status (parse-status "studying")))
+    (result-binder:let ((name (parse-name "john"))
+                        (age (parse-age "-28"))
+                        (status (parse-status "studying")))
       (Ok (Tuple3 name age status))))
 
   (define case-err-2
-    (validate-with-result:let ((name (parse-name "john"))
-                               (age (parse-age "twenty"))
-                               (status (parse-status "playing")))
+    (result-binder:let ((name (parse-name "john"))
+                        (age (parse-age "twenty"))
+                        (status (parse-status "playing")))
       (Ok (Tuple3 name age status)))))
 ```
 
 REPL:
 
 ```
-VALIDATE-WITH-RESULT-EXAMPLE> (coalton case-ok)
+RESULT-BINDER-EXAMPLE> (coalton case-ok)
 #.(OK #.(TUPLE3 "john" 28 #.SLEEPING))
-VALIDATE-WITH-RESULT-EXAMPLE> (coalton case-err-1)
+RESULT-BINDER-EXAMPLE> (coalton case-err-1)
 #.(ERR ("parse-age-error (negative)"))
-VALIDATE-WITH-RESULT-EXAMPLE> (coalton case-err-2)
+RESULT-BINDER-EXAMPLE> (coalton case-err-2)
 #.(ERR ("parse-age-error" "parse-status-error"))
-VALIDATE-WITH-RESULT-EXAMPLE>
+RESULT-BINDER-EXAMPLE>
 ```
 
 ## LICENSE
