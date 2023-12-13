@@ -24,7 +24,7 @@ If you are using Quicklisp, you can load the system with the following.
 
 ```
 (parallel-validator:let ((<var1> <result-type-value1>)
-                  (<var2> <result-type-value2>)
+                         (<var2> <result-type-value2>)
                   ...)
   <expr> ...)
 ```
@@ -67,20 +67,20 @@ Type of Err must be monoid.
 
   (define case-ok
     (parallel-validator:let ((name (parse-name "john"))
-                        (age (parse-age "28"))
-                        (status (parse-status "sleeping")))
+                             (age (parse-age "28"))
+                             (status (parse-status "sleeping")))
       (Ok (Tuple3 name age status))))
 
   (define case-err-1
     (parallel-validator:let ((name (parse-name "john"))
-                        (age (parse-age "-28"))
-                        (status (parse-status "studying")))
+                             (age (parse-age "-28"))
+                             (status (parse-status "studying")))
       (Ok (Tuple3 name age status))))
 
   (define case-err-2
     (parallel-validator:let ((name (parse-name "john"))
-                        (age (parse-age "twenty"))
-                        (status (parse-status "playing")))
+                             (age (parse-age "twenty"))
+                             (status (parse-status "playing")))
       (Ok (Tuple3 name age status)))))
 ```
 
