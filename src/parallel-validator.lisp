@@ -1,10 +1,10 @@
-(defpackage #:result-binder
+(defpackage #:parallel-validator
   (:use #:coalton
         #:coalton-prelude)
   (:shadow #:let)
   (:export #:let))
 
-(cl:in-package #:result-binder)
+(cl:in-package #:parallel-validator)
 
 (named-readtables:in-readtable coalton:coalton)
 
