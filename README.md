@@ -2,6 +2,12 @@
 
 Syntax `let` for delaying result in coalton.
 
+## Archive this project
+
+Use validation type instead of macro.
+
+For example: https://git.tojo.tokyo/coalton/validation.git/about/
+
 ## Installation
 
 Since it depends on Coalton, please refer to the link below to install Coalton.
