@@ -6,7 +6,7 @@ Syntax `let` for delaying result in coalton.
 
 Use validation type instead of macro.
 
-For example: https://git.tojo.tokyo/coalton/validation.git/about/
+For example: https://github.com/tojoqk/tokyo.tojo.validation
 
 ## Installation
 
